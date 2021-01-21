@@ -11,6 +11,8 @@ The outcome I hope to achieve from this project is to gain practical hands-on ex
 
 Main Steps
 ----------
+This project will be completed in two phases.  In Phase I the entire solution will be implemented on AWS.  In Phase II the Phase I solution will be broken into three pieces and implemented on three different cloud providers.  Here are the four main steps of Phase II:
+
 1. Create a simple web page that takes a picture via a mobile device or computer webcam.
 2. Save that picture to a storage service on **Cloud Provider 1**.
 3. Upon saving that image, trigger a serverless process that calls out to an Image Recognition service on 
@@ -19,4 +21,4 @@ Main Steps
 
 Completion Date
 ---------------
-I expect to have this project finished by 31 January 2021
+I expect to have this project finished by 28 February 2021
