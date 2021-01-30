@@ -29,7 +29,20 @@ This is what has been implemented on AWS to date:
   * one bucket for the serverless website hosting
     * configured as Public
     * configured as a Static Website
-  * one bucket to recieve the piture uploads
+  * one bucket to recieve the picture uploads
+    * CORS configuration
+    * configure to trigger the second Lambda function
+* Two Lambda functions:
+  * first function to generate the S3 presigned URLs to PUT the image object
+    * deployed using Chalice to automatically create API REST API trigger and IAM role
+      * IAM Policy json file
+      * Environment variables in the config.json file
+
+It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN inorder to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
+
+Remaining Work To Be Completed
+------------------------------
+
 
 Expected Completion Date
 ------------------------
