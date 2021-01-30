@@ -19,6 +19,18 @@ This project will be completed in two phases.  In Phase I the entire solution wi
 **Cloud Provider 2**.
 4. Take the metadata that was received back from the Image Recognition service and store it, along with a URL path to the original image into a NoSQL database on **Cloud Provider 3**.
 
-Completion Date
----------------
-I expect to have this project finished by 28 February 2021
+Progress To Date
+----------------
+I have decided to use with AWS, Azure and GCP.
+AWS will be Cloud PRovider 1 and I have not decided what I will use Azure and GCP for.  I may use Azure or GCP for the Image Recognition service and I may use Azure or GCP for the NoSQL database.
+
+This is what has been implemented on AWS to date:
+* Two S3 buckets:
+  * one bucket for the serverless website hosting
+    * configured as Public
+    * configured as a Static Website
+  * one bucket to recieve the piture uploads
+
+Expected Completion Date
+------------------------
+I expect to have this project finished by 14 February 2021
