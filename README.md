@@ -26,24 +26,24 @@ AWS will be Cloud PRovider 1 and I have not decided what I will use Azure and GC
 
 This is what has been implemented on AWS to date:
 * Two S3 buckets:
-  * one bucket for the serverless website hosting
+  * serverless website hosting contents bucket
     * configured as Public
     * configured for Static website hosting
-  * one bucket to recieve the picture uploads
+  * upload bucket to receive the picture uploads
     * CORS configuration
     * configure to trigger the second Lambda function
+* HTML, jQuery and CSS that receives the S3 Pre-Signed URL and uploads the picture object to the S3 upload bucket
 * Two Lambda functions:
-  * the first Lambda function generates the S3 presigned URLs to PUT the image object
+  * the first Lambda function generates the S3 Pre-Signed URLs to PUT the image object
     * deployed using Chalice to automatically create API REST API trigger and IAM role
-      * IAM Policy json file
-      * Environment variables in the config.json file
-  * the second Lambda function is trigger by S3 whenever a picture is uploaded and then communicates with Azure and GCP to perform the Image Recognition and NoSQL tasks.
+      * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
+      * Environment variables for S3 upload bucket name and region name in the config.json file
 
-It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN inorder to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
+It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN in order to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
 
 Remaining Work To Be Completed
 ------------------------------
-* Write the second Lambda function
+* Write the second Lambda function that will be triggered by S3 whenever a picture is uploaded and then communicates with Azure and GCP to perform the Image Recognition and NoSQL tasks.
 * Configure the Image Recognition Service
 * Configure the NoSQL database
 * Create HTML and Javascript to display the final results
