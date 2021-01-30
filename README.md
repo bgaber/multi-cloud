@@ -33,7 +33,7 @@ This is what has been implemented on AWS to date:
     * CORS configuration
     * configure to trigger the second Lambda function
 * HTML, jQuery and CSS that receives the S3 Pre-Signed URL and uploads the picture object to the S3 upload bucket
-* Two Lambda functions:
+* One of two Lambda functions:
   * the first Lambda function generates the S3 Pre-Signed URLs to PUT the image object
     * deployed using Chalice to automatically create API REST API trigger and IAM role
       * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
