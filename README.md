@@ -50,7 +50,8 @@ It was necesary to register a DNS domain name with Route 53 and use the CloudFro
 | AWS Route 53 | Create domain that can be used with CloudFront to route SSL (HTTPS) traffic to HTTP S3 Static website |
 | AWS S3 | Buckets for hosting static web content and receiving image uploads |
 | Azure | CosmosDB or ... |
-| GCP | ... |
+| Chalice | Deploy Lambda with API Gateway Trigger |
+| GCP | NoSQL database or ... |
 
 Remaining Work To Be Completed
 ------------------------------
