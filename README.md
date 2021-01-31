@@ -42,23 +42,23 @@ This is what has been implemented on AWS to date:
 It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN in order to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
 
 | Cloud Services Used | Reasons |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | AWS API Gateway | Trigger REST API Lambda function that returns the S3 Pre-Signed URL |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | AWS Certificate Management Service | SSL for navigator.mediaDevices Mozilla Web API |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | AWS CloudFront Service | SSL to S3 Static webpage for navigator.mediaDevices Mozilla Web API | 
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | AWS Lambda | S3 Presigned URL Generation and interact with Azure and GCP for image analysis |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | AWS Route 53 | Create domain that can be used with CloudFront to route SSL (HTTPS) traffic to HTTP S3 Static website |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | AWS S3 | Buckets for hosting static web content and receiving image uploads |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | Azure | CosmosDB or ...
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 | GCP | ... |
-| :------------------ | :-----: |
+| :-----------------: | :-----: |
 
 Remaining Work To Be Completed
 ------------------------------
