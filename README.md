@@ -43,7 +43,22 @@ It was necesary to register a DNS domain name with Route 53 and use the CloudFro
 
 | Cloud Services Used | Reasons |
 | :------------------ | :-----: |
-| AWS Cerfificate Management Service | SSL for navigator.mediaDevices Mozilla Web API |
+| AWS API Gateway | Trigger REST API Lambda function that returns the S3 Pre-Signed URL |
+| :------------------ | :-----: |
+| AWS Certificate Management Service | SSL for navigator.mediaDevices Mozilla Web API |
+| :------------------ | :-----: |
+| AWS CloudFront Service | SSL to S3 Static webpage for navigator.mediaDevices Mozilla Web API | 
+| :------------------ | :-----: |
+| AWS Lambda | S3 Presigned URL Generation and interact with Azure and GCP for image analysis |
+| :------------------ | :-----: |
+| AWS Route 53 | Create domain that can be used with CloudFront to route SSL (HTTPS) traffic to HTTP S3 Static website |
+| :------------------ | :-----: |
+| AWS S3 | Buckets for hosting static web content and receiving image uploads |
+| :------------------ | :-----: |
+| Azure | CosmosDB or ...
+| :------------------ | :-----: |
+| GCP | ... |
+| :------------------ | :-----: |
 
 Remaining Work To Be Completed
 ------------------------------
