@@ -41,6 +41,10 @@ This is what has been implemented on AWS to date:
 
 It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN in order to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
 
+| Cloud Services Used | Reasons |
+| :------------------ | :-----: |
+| AWS Cerfificate Management Service | SSL for navigator.mediaDevices Mozilla Web API |
+
 Remaining Work To Be Completed
 ------------------------------
 * Write the second Lambda function that will be triggered by S3 whenever a picture is uploaded and then communicates with Azure and GCP to perform the Image Recognition and NoSQL tasks.
