@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<title>Still photo capture and process</title>
+  <meta charset='utf-8'>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script src="/javascript/capture.js"></script>
+  <script src="/javascript/get-presigned-url-for-new-image.js"></script>
+  <script src="/javascript/handle-new-image.js"></script>
+
+  <link rel='stylesheet' type='text/css' href='https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css' />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+	<link rel="stylesheet" href="/css/main.css" type="text/css" media="all">
+</head>
+<body>
+<div class="contentarea">
+	<h1>
+		Still photo capture
+	</h1>
+	<p>
+		Using your built-in webcam, fetch an image from that stream, create a PNG using that image and save to AWS S3.
+	</p>
+  <div class="camera">
+    <video id="video">Video stream not available.</video>
+    <button id="startbutton">Take photo</button> 
+  </div>
+  <canvas id="canvas">
+  </canvas>
+  <div class="output">
+    <img id="photo" alt="The screen capture will appear in this box."> 
+  </div>
+</div>
+
+<div class="stdtext" id='name_of_file'></div>
+<div class="stdtext" id='psurl_result'></div>
+<div class="stdtext" id='upload_result'></div>
+<div id='dialog-message' title='Alert'></div>
+
+</body>
+</html>

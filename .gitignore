@@ -1,7 +1,7 @@
 *.v*.py
 *.pptx
-*.js
-*.html
+*.v*.js
+*.v*.html
 *.php
-*.css
+*.v*.css
 *.txt

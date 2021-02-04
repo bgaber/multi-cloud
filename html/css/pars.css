@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+   font-family:Trebuchet MS, Verdana, Arial;
+   font-size:12px;
+}
+
+form {
+	background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+	margin:auto;
+	position:relative;
+	width:1000px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 24px;
+	font-weight: bold;
+	color: #09C;
+	text-decoration: none;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px;
+	border: 1px solid #999;
+	border: inset 1px solid #333;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fld-lbl {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 24px;
+	font-weight: bold;
+	color: #09C;
+}
+
+input {
+	width:200px;
+	display:block;
+	border: 1px solid #999;
+	height: 20px;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+input[type=submit], [type=button] {
+	height: 25px;
+}
+
+input[type=checkbox], input[type=radio] {
+	width:15px;
+	height: 15px;
+	display:inline;
+}
+
+select {
+	height:25px;
+   line-height:25px;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+i {
+	font-style: italic;
+	font-size: 10px;
+}
+
+label {
+   display: block;
+   float: left;
+   margin: 2px 2px 4px 2px;
+   text-align: right;
+   font-family:Trebuchet MS, Verdana;
+   font-size:13px;
+}
+
+br { clear: left; }
+
+fieldset
+{
+   border-color: black
+   font-family:Trebuchet MS, Verdana, Arial;
+   font-size:12px;
+}
+
+fieldset.formatted
+{
+   border: 1px solid #781351;
+   border-color: black;
+   -moz-border-radius:5px;
+   border-radius: 5px;
+}
+
+fieldset.formatted50
+{
+   border: 1px solid #781351;
+   border-color: black;
+   -moz-border-radius:5px;
+   border-radius: 5px;
+   width: 50%;
+}
+
+legend.formatted
+{
+   color: #fff;
+   background: #ffa20c;
+   border: 1px solid #781351;
+   padding: 2px 6px
+}
+
+.ui-dialog .ui-dialog-titlebar, .ui-dialog .ui-dialog-buttonpane, .ui-dialog .ui-dialog-content {
+	font-size: 12px;
+}
+
+.ui-button,  .ui-button-text .ui-button {
+	font-size: 12px !important;
+}

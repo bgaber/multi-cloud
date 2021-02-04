@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset=utf-8>
+   <title>Brian's Multi-Cloud Project</title>
+
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    
+   <link rel='stylesheet' type='text/css' href='https://code.jquery.com/ui/1.12.1/themes/black-tie/jquery-ui.css' />
+   <link rel="SHORTCUT ICON" href="/images/favicon.ico"/>
+
+<SCRIPT LANGUAGE=JavaScript>
+var newwindow;
+function popnuwin(url)
+{
+	newwindow=window.open(url,'Multi-Cloud','resizable,status,scrollbars,height=740,width=960');
+	if (window.focus) {newwindow.focus()}
+}
+
+$(document).ready(function() {
+	$("#take_a_picture, #upload_a_picture").button({
+	   icons: {
+	      primary: "ui-icon-gear",
+	   	  secondary: "ui-icon-gear"
+	   }
+	});
+});
+
+</SCRIPT>
+
+<STYLE TYPE="text/css"><!--
+body {
+   font-family:Verdana, Trebuchet MS;
+   font-size:12px;
+}
+
+.btn {
+   font-family:Verdana, Trebuchet MS;
+   font-size:12px;
+   color:black;
+   border:1px solid #000000;
+   margin-top:5px;
+   background-color: #FFD60D
+}
+
+li {
+   font-family:Trebuchet MS, Verdana;
+   font-size:12px;
+}
+
+p {
+   font-family:Trebuchet MS, Verdana;
+   font-size:14px;
+}
+
+table.bdr {
+   font-family:Trebuchet MS, Verdana;
+   border:1px solid #000000;
+   border-collapse: collapse;
+}
+
+th.hdr {
+   font-family:Verdana, Trebuchet MS;
+   font-size:20px;
+   color:black;
+}
+
+th {
+   font-family:Verdana, Trebuchet MS;
+   font-size:11px;
+   color:black;
+}
+
+td {
+   font-family:Verdana, Trebuchet MS;
+   font-size:11px;
+   color:black;
+   text-align:center;
+}
+
+select {
+   font-family:Verdana, Trebuchet MS;
+   font-size:11px;
+   border:1px solid blue;
+   color: navy;
+   background-color: white
+}
+
+.ui-dialog .ui-dialog-titlebar, .ui-dialog .ui-dialog-buttonpane, .ui-dialog .ui-dialog-content {
+	font-size: 12px;
+}
+
+.ui-widget button {
+	font-size: 14px;
+}
+--></STYLE>
+   <!--WXO STYLESHEET CSS PLACEHOLDER-->
+    <script type="text/javascript">		this.focus();</script> <!-- template --><link rel="stylesheet" href="/css/layout-B.css" type="text/css" /><link rel="stylesheet" href="/css/websolution-CLF2-B.css" type="text/css" /><link rel="stylesheet" href="/css/base.css" type="text/css" /><link rel="stylesheet" href="/css/wxo.css" type="text/css" />
+   <!--END WXO STYLESHEET CSS PLACEHOLDER-->
+</head>
+<body>
+    <!--WXO STYLESHEET HEADER PLACEHOLDER-->
+    <div class="page">
+      <div class="core">
+         <div id="headerGov" title="Brian's Multi-Cloud Project">
+            <div id="siteBanner">
+               <img src="/images/lf.png" width="63" height="65" class="lf" alt="" />
+               <div id="websiteTitle">
+                  <span>Brian's Multi-Cloud Project</span>
+               </div>
+            </div> <!-- siteBanner -->
+            <div id="headerMenu" title="Navigation Links">
+               <ul> 			<li id="headerMenuOne"><a href="#">&nbsp</a></li>
+                  				<li id="headerMenuTwo"><a href="#">&nbsp</a></li>
+                  				<li id="headerMenuThree"><a href="https://github.com/bgaber/multi-cloud/blob/main/README.md" title="README">README</a></li>
+                  				<li id="headerMenuFour"><a href="javascript:popnuwin('');" title="User Guide">User Guide</a></li>
+                  				<li id="headerMenuFive"><a title="Support" href="mailto:brian.gaber@mail.com?subject=Multi Cloud Support">Multi Cloud Support</a></li>
+                  				<li id="headerMenuSix"><a href="#">&nbsp</a></li>
+               </ul>
+            </div> <!-- headerMenu -->
+         </div>  <!-- core --><!-- Breadcrumbs (mini-navigation) Trail  -->	<!-- Container DIVs  -->
+      </div>
+   </div>
+   <!--END WXO STYLESHEET HEADER PLACEHOLDER-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+   <font size=+1 color=navy>Brian's Multi-Cloud Project</font>
+
+   <form METHOD="GET" ACTION="/snap-a-picture.html">
+   	  <p>
+		   <button id='take_a_picture'>Snap A New Picture</button>
+      </p>
+   </form>
+   <form METHOD="GET" ACTION="/upload-selected-file-to-s3.html">
+      <p>
+	       <button id='upload_a_picture'>Upload An Existing Picture</button>
+      </p>
+   </form>
+</center>
+
+</body>
+</html>
