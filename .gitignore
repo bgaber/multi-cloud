@@ -1,7 +1,10 @@
+venv
 *.v*.py
-*.pptx
 *.v*.js
 *.v*.html
-*.php
 *.v*.css
+*.v*.yaml
+*.json
+*.php
+*.pptx
 *.txt

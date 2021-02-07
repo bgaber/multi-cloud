@@ -33,11 +33,13 @@ This is what has been implemented on AWS to date:
     * CORS configuration
     * configure to trigger the second Lambda function
 * HTML, jQuery and CSS that receives the S3 Pre-Signed URL and uploads the picture object to the S3 upload bucket
-* One of two Lambda functions:
+* Two Lambda functions:
   * the first Lambda function generates the S3 Pre-Signed URLs to PUT the image object
     * deployed using Chalice to automatically create API REST API trigger and IAM role
       * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
       * Environment variables for S3 upload bucket name and region name in the config.json file
+  * the second Lambda function that is triggered by S3 whenever a picture is uploaded and then communicates with the GCP Vision to perform the Image Recognition and outputs the GCP Vision image analysis results to CloudWatch Logs and will be sent to Azure CosmosDB NoSQL tasks.
+* Configured the GCP Vision Image Recognition Service
 
 It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN in order to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
 
@@ -49,15 +51,13 @@ It was necesary to register a DNS domain name with Route 53 and use the CloudFro
 | AWS Lambda | S3 Presigned URL Generation and interact with Azure and GCP for image analysis |
 | AWS Route 53 | Create domain that can be used with CloudFront to route SSL (HTTPS) traffic to HTTP S3 Static website |
 | AWS S3 | Buckets for hosting static web content and receiving image uploads |
-| Azure | CosmosDB or ... |
+| Azure | CosmosDB |
 | Chalice | Deploy Lambda with API Gateway Trigger |
-| GCP | NoSQL database or ... |
+| GCP | Vision |
 
 Remaining Work To Be Completed
 ------------------------------
-* Write the second Lambda function that will be triggered by S3 whenever a picture is uploaded and then communicates with Azure and GCP to perform the Image Recognition and NoSQL tasks.
-* Configure the Image Recognition Service
-* Configure the NoSQL database
+* Configure the Azure CosmosDB NoSQL database
 * Create HTML and Javascript to display the final results
 
 Expected Completion Date

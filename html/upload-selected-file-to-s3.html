@@ -67,10 +67,10 @@
                     <td>
                     <fieldset>
                         <legend>Upload Image</legend>
-                        1 MB File Size Limit
+                        4 MB File Size Limit
                         <form enctype='multipart/form-data' id="aws_upload_form" method='POST' class='frmFileUpload'>
                             <center>
-                                <input type='hidden' name='MAX_FILE_SIZE' value='1000000' />
+                                <input type='hidden' name='MAX_FILE_SIZE' value='4000000' />
                                 <input type='hidden' name='x-amz-acl' value='public-read' />
                                 <input type='file' id="fileInput" class='inputFile' />
                                 <input type='submit' value='Upload Selected File To S3' />

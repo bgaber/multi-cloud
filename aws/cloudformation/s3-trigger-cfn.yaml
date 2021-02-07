@@ -1,0 +1,115 @@
+---
+# Brian Gaber
+# Serverless (S3, Lambda, API Gateway, CloudWatch Logs) Cloudformation Template
+# Stack can be created from the console or from the AWS CLI.
+# If stack is created from the console then resources will be created in the region shown in the upper right.
+# If stack is created from the AWS CLI then the region flag must be used or the stack will be created in the AWS default region (us-east-1).
+# Example of creating stack from the AWS CLI:
+# aws --region us-east-2 cloudformation create-stack --stack-name myteststack --template-body file://st-trigger.yaml --parameters ParameterKey=KeyPairName,ParameterValue=us-east-2
+# This CloudFormation Template will create:
+# - IAM Role
+# - Lambda Function
+#
+Parameters:
+  S3UploadBucket:
+    Description: Name of an existing S3 Bucket to receive file uploads
+    Default: bg-ca-central-1-uploads
+    Type: String
+    MinLength: 5
+    MaxLength: 64
+    AllowedPattern: "[-_ a-zA-Z0-9]*"
+    ConstraintDescription: can contain only alphanumeric characters, spaces, slashes and underscores.
+
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    DependsOn:
+      - ProcessingLambdaPermission
+    Properties:
+      BucketName: !Ref S3UploadBucket
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt S3TriggerFunction.Arn
+      CorsConfiguration:
+        CorsRules:
+          -
+            AllowedOrigins: 
+              - "*"
+            AllowedMethods: 
+              - POST
+              - GET
+              - PUT
+              - HEAD
+            AllowedHeaders: 
+              - "*"
+
+  ProcessingLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !Ref S3TriggerFunction
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub 'arn:aws:s3:::${S3UploadBucket}'
+      SourceAccount: !Ref AWS::AccountId
+
+  ProcessingLambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Policies:
+        - PolicyName: allowLogging
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              - logs:*
+              Resource: arn:aws:logs:*:*:*
+        - PolicyName: getObjects
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action:
+              - s3:GetObject
+              Resource:  !Sub 'arn:aws:s3:::${S3UploadBucket}/*'
+
+  S3TriggerFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code: 
+        S3Bucket: !Sub bg-${AWS::Region}-bucket
+        S3Key: gcpVision.zip
+      Handler: s3-trigger.lambda_handler
+      Role: !GetAtt ProcessingLambdaExecutionRole.Arn
+      Description: S3 Trigger to send image to GCP Vision for image analysis
+      Runtime: python3.7
+      MemorySize: 128
+      Timeout: 180
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterLabels:
+      S3UploadBucket:
+        default: "What is the name of S3 Bucket that will receive image file uploads?"
+        
+Outputs:
+  LambdaArn:
+    Description: Arn of the S3 Trigger Lambda Function
+    Value:
+      !GetAtt S3TriggerFunction.Arn
+  IAMRoleArn:
+    Description: Arn of the IAM Lambda Role
+    Value:
+      !GetAtt ProcessingLambdaExecutionRole.Arn
+  MyStacksRegion:
+    Value: !Ref "AWS::Region"
