@@ -25,22 +25,20 @@ Parameters:
     Default: https://gcp-vision-response.documents.azure.com:443/
     Description: Azure Cosmos DB Host Value
     Type: String
-    MinLength: '1'
-    MaxLength: '64'
-    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
-    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
+    MinLength: '20'
+    MaxLength: '100'
+    ConstraintDescription: Must be the Azure URL to your Cosmos DB
   MasterKey:
     Description: Azure Cosmos DB Master Key
     Type: String
-    MinLength: '1'
-    MaxLength: '64'
-    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
-    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
+    MinLength: '20'
+    MaxLength: '100'
+    ConstraintDescription: Must be the Azure Master Key assigned to your Cosmos DB
   DatabaseId:
     Default: ImageAnalysis
     Description: Azure Cosmos DB ID
     Type: String
-    MinLength: '1'
+    MinLength: '2'
     MaxLength: '64'
     AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
     ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
@@ -48,7 +46,7 @@ Parameters:
     Default: Analyses
     Description: Azure Cosmos DB Container Id
     Type: String
-    MinLength: '1'
+    MinLength: '2'
     MaxLength: '64'
     AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
     ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.

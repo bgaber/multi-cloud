@@ -32,9 +32,11 @@ def db_connect():
     try:
         # setup database
         try:
-            db = client.create_database(id=DATABASE_ID)
+            #db = client.create_database(id=DATABASE_ID)
+            db = client.create_database_if_not_exists(id=DATABASE_ID)
 
         except exceptions.CosmosResourceExistsError:
+            #db = client.get_database_client(database=DATABASE_ID)
             pass
 
         # setup container
@@ -43,12 +45,13 @@ def db_connect():
             print('Container with id \'{0}\' created'.format(CONTAINER_ID))
 
         except exceptions.CosmosResourceExistsError:
+            container = db.get_container_client(CONTAINER_ID)
             print('Container with id \'{0}\' was found'.format(CONTAINER_ID))
 
         return container
 
     except exceptions.CosmosHttpResponseError as e:
-        print('\cosmosdb has caught an error. {0}'.format(e.message))
+        print('\ncosmosdb has caught an error. {0}'.format(e.message))
 
     finally:
         print("\ncosmosdb done")
