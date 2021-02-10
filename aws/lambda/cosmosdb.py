@@ -3,8 +3,7 @@ import azure.cosmos.cosmos_client as cosmos_client
 import azure.cosmos.exceptions as exceptions
 from azure.cosmos.partition_key import PartitionKey
 import datetime
-
-import cosmos_config
+import os
 
 # ----------------------------------------------------------------------------------------------------------
 # Prerequistes -
@@ -16,10 +15,10 @@ import cosmos_config
 #    https://pypi.python.org/pypi/azure-cosmos/
 # ----------------------------------------------------------------------------------------------------------
 
-HOST = cosmos_config.settings['host']
-MASTER_KEY = cosmos_config.settings['master_key']
-DATABASE_ID = cosmos_config.settings['database_id']
-CONTAINER_ID = cosmos_config.settings['container_id']
+HOST = os.environ['COSMOS_DB_HOST']
+MASTER_KEY = os.environ['COSMOS_MASTER_KEY']
+DATABASE_ID = os.environ['COSMOS_DATABASE_ID']
+CONTAINER_ID = os.environ['COSMOS_CONTAINER_ID']
 
 def write_item(image_labels_json):
     container = db_connect()

@@ -24,16 +24,9 @@ def lambda_handler(event, context):
         client = vision.ImageAnnotatorClient()
         # [END vision_python_migration_client]
 
-        # The name of the image file to annotate
-        file_name = os.path.abspath("resources/022.jpg")
-
         # Loads the image into memory
         fileObj = s3.get_object(Bucket=bucketname, Key=filename)
         file_content = fileObj["Body"].read()
-
-        #with io.open(file_name, 'rb') as image_file:
-        #    content = image_file.read()
-
         image = vision.Image(content=file_content)
 
         # Performs label detection on the image file
@@ -41,16 +34,19 @@ def lambda_handler(event, context):
         labels = response.label_annotations
 
         # Result of GCP Vision Image Analysis
+        # Output results to CloudWach Logs
         print(labels)
         print('Labels and Scores:')
         scores = []
         for label in labels:
             print(label.description + " - " + str(label.score))
+            # Build List of scores to be put into the Azure Cosmos DB JSON dictionary
             scores.append({"description": label.description, "score": label.score})
             
-        # Create JSON to be written into Cosmos DB
+        # Create JSON to be written into Azure Cosmos DB
         random_str_int = str(random.randint(1000000, 1000000000))
-        db_dict = {"id": random_str_int, "bucket": bucketname, "image_fname": filename, "scores": scores}
+        db_dict = {"id": random_str_int, "bucket": bucketname,
+                   "image_fname": filename, "scores": scores}
         #print(json.dumps(db_dict, indent = 4))
         cosmosdb.write_item(db_dict)
 

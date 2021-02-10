@@ -5,10 +5,12 @@
 # If stack is created from the console then resources will be created in the region shown in the upper right.
 # If stack is created from the AWS CLI then the region flag must be used or the stack will be created in the AWS default region (us-east-1).
 # Example of creating stack from the AWS CLI:
-# aws --region us-east-2 cloudformation create-stack --stack-name myteststack --template-body file://st-trigger.yaml --parameters ParameterKey=KeyPairName,ParameterValue=us-east-2
+# aws --region us-east-1 cloudformation create-stack --stack-name myteststack --template-body file://s3-trigger-cfn.yaml --parameters ParameterKey=KeyPairName,ParameterValue=us-east-1
 # This CloudFormation Template will create:
+# - S3 Upload Bucket
 # - IAM Role
 # - Lambda Function
+# - S3 Trigger of Lambda Function
 #
 Parameters:
   S3UploadBucket:
@@ -19,6 +21,37 @@ Parameters:
     MaxLength: 64
     AllowedPattern: "[-_ a-zA-Z0-9]*"
     ConstraintDescription: can contain only alphanumeric characters, spaces, slashes and underscores.
+  DatabaseHost:
+    Default: https://gcp-vision-response.documents.azure.com:443/
+    Description: Azure Cosmos DB Host Value
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
+  MasterKey:
+    Description: Azure Cosmos DB Master Key
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
+  DatabaseId:
+    Default: ImageAnalysis
+    Description: Azure Cosmos DB ID
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
+  ContainerId:
+    Default: Analyses
+    Description: Azure Cosmos DB Container Id
+    Type: String
+    MinLength: '1'
+    MaxLength: '64'
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: Must begin with a letter and contain only alphanumeric characters.
 
 Resources:
   Bucket:
@@ -92,12 +125,26 @@ Resources:
       Handler: s3-trigger.lambda_handler
       Role: !GetAtt ProcessingLambdaExecutionRole.Arn
       Description: S3 Trigger to send image to GCP Vision for image analysis
+      Environment:
+        Variables:
+          COSMOS_DB_HOST: !Ref DatabaseHost
+          COSMOS_MASTER_KEY: !Ref MasterKey
+          COSMOS_DATABASE_ID: !Ref DatabaseId
+          COSMOS_CONTAINER_ID: !Ref ContainerId
       Runtime: python3.7
       MemorySize: 128
       Timeout: 180
 
 Metadata:
   AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "Azure Cosmos DB"
+        Parameters:
+          - DatabaseHost
+          - MasterKey
+          - DatabaseId
+          - ContainerId
     ParameterLabels:
       S3UploadBucket:
         default: "What is the name of S3 Bucket that will receive image file uploads?"

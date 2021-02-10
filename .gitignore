@@ -1,4 +1,6 @@
+.gitignore
 venv
+cli-test-scripts
 *.v*.py
 *.v*.js
 *.v*.html

@@ -100,7 +100,7 @@ p {
       The website (html, css and javascript) is hosted on AWS S3 and the uploaded images are stored on S3.<br>
       AWS Lambda functions are used to create S3 Pre-Signed URLs for the image upload and triggered by S3 to send the image
       for analysis.<br>
-      The image analysis is performed by GCP Vision and the analysis results are store in Azure Cosmos DB.<br>
+      The image analysis is performed by GCP Vision and the analysis results are stored in Azure Cosmos DB.<br>
    </p>
    
    <br>
@@ -115,6 +115,11 @@ p {
    <form METHOD="GET" ACTION="/upload-selected-file-to-s3.html">
       <p>
 	       <button id='upload_a_picture'>Upload An Existing Picture</button>
+      </p>
+   </form>
+   <form METHOD="GET" ACTION="/upload-history.html">
+      <p>
+         <button id='upload_history'>Upload History</button>
       </p>
    </form>
 </center>
