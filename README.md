@@ -19,8 +19,10 @@ This project was completed in two phases.  In Phase I the entire solution will b
 **Cloud Provider 2**.
 4. Take the metadata that was received back from the Image Recognition service and store it, along with a URL path to the original image into a NoSQL database on **Cloud Provider 3**.
 
-Progress To Date
-----------------
+Solution
+--------
+![Alt text](images/multi-cloud.png?raw=true "Brian's Multi-Cloud Architecture")
+
 AWS, Azure and GCP were used to complete this project.
 AWS is Cloud Provider 1, GCP is Cloud Provider 2 and  Azure is Cloud Provider 3.  AWS was used for the S3 serverless hosting of the website and the Lambda functions.  GCP Vision was used for the Image Recognition service and Azure Cosmos DB was used for the NoSQL database.
 
