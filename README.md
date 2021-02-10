@@ -21,10 +21,10 @@ This project was completed in two phases.  In Phase I the entire solution will b
 
 Solution
 --------
-![Alt text](images/multi-cloud.png?raw=true "Brian's Multi-Cloud Architecture")
-
 AWS, Azure and GCP were used to complete this project.
 AWS is Cloud Provider 1, GCP is Cloud Provider 2 and  Azure is Cloud Provider 3.  AWS was used for the S3 serverless hosting of the website and the Lambda functions.  GCP Vision was used for the Image Recognition service and Azure Cosmos DB was used for the NoSQL database.
+
+![Alt text](images/multi-cloud.png?raw=true "Brian's Multi-Cloud Architecture")
 
 These requirements were implemented on AWS Services:
 * Two S3 buckets:
