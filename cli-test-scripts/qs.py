@@ -26,7 +26,7 @@ def run_quickstart():
     from google.cloud import vision
     # [END vision_python_migration_import]
 
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\\Users\\Brian\\Downloads\\multi-cloud-vision-api-15ab1c23c633.json"
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "multi-cloud-vision-api-15ab1c23c633.json"
 
     # Instantiates a client
     # [START vision_python_migration_client]

@@ -3,7 +3,7 @@
 
 Goal
 ----
-My goal we I began this project was to architect and build an image upload and recognition process using no less than three different cloud providers.  In the end I achieved my goal.
+My goal when I began this project was to design and build an image upload and recognition process using no less than three different cloud providers.  In the end I achieved my goal.
 
 Outcome
 -------
