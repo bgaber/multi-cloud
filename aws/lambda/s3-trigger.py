@@ -3,6 +3,8 @@ import io
 import os
 import json
 from google.cloud import vision
+import cosmosdb
+import random
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "resources/multi-cloud-vision-api-15ab1c23c633.json"
 
@@ -41,8 +43,17 @@ def lambda_handler(event, context):
         # Result of GCP Vision Image Analysis
         print(labels)
         print('Labels and Scores:')
+        scores = []
         for label in labels:
             print(label.description + " - " + str(label.score))
+            scores.append({"description": label.description, "score": label.score})
+            
+        # Create JSON to be written into Cosmos DB
+        random_str_int = str(random.randint(1000000, 1000000000))
+        db_dict = {"id": random_str_int, "bucket": bucketname, "image_fname": filename, "scores": scores}
+        #print(json.dumps(db_dict, indent = 4))
+        cosmosdb.write_item(db_dict)
+
     return {
         'statusCode': 200,
         'body': json.dumps('Successful image analysis')

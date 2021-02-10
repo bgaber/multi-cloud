@@ -4,6 +4,7 @@ venv
 *.v*.html
 *.v*.css
 *.v*.yaml
+*debug*
 *.json
 *.php
 *.pptx

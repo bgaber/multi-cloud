@@ -19,7 +19,9 @@ $(document).ready(function () {
     // $("#get_psurl").click(function() {
     $("#aws_upload_form").submit(function (e) {
         e.preventDefault();
-        var form_data = new FormData(this); //Creates new FormData object
+        //stackoverflow.com / questions / 21044798 / how - to - use - formdata -for-ajax - file - upload
+        //var form_data = new FormData(this); //Creates new FormData object
+        var form_data = new FormData($(this)[0]);
 
         // Debug alert
         //jq_ui_alert('dialog-message', "File Selected");

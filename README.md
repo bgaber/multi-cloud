@@ -3,15 +3,15 @@
 
 Goal
 ----
-My goal for this project is to architect and build an image upload and recognition process using no less than three different cloud providers.  At the time of writing I have chosen AWS and Azure as two of the three providers.  The final provider will be either GCP, IBM Cloud, Alibaba or Oracle Cloud.
+My goal we I began this project was to architect and build an image upload and recognition process using no less than three different cloud providers.  In the end I achieved my goal.
 
-Expected Outcome
-----------------
-The outcome I hope to achieve from this project is to gain practical hands-on experience with cloud providers with whom I don't not normally work.
+Outcome
+-------
+In completing this propject I was able to gain practical hands-on experience with cloud providers with whom I don't not normally work.
 
 Main Steps
 ----------
-This project will be completed in two phases.  In Phase I the entire solution will be implemented on AWS.  In Phase II the Phase I solution will be broken into three pieces and implemented on three different cloud providers.  Here are the four main steps of Phase II:
+This project was completed in two phases.  In Phase I the entire solution will be implemented on AWS.  In Phase II the Phase I solution will be broken into three pieces and implemented on three different cloud providers.  Here are the four main steps of Phase II:
 
 1. Create a simple web page that takes a picture via a mobile device or computer webcam.
 2. Save that picture to a storage service on **Cloud Provider 1**.
@@ -21,10 +21,10 @@ This project will be completed in two phases.  In Phase I the entire solution wi
 
 Progress To Date
 ----------------
-I have decided to use with AWS, Azure and GCP.
-AWS will be Cloud PRovider 1 and I have not decided what I will use Azure and GCP for.  I may use Azure or GCP for the Image Recognition service and I may use Azure or GCP for the NoSQL database.
+AWS, Azure and GCP were used to complete this project.
+AWS is Cloud Provider 1, GCP is Cloud Provider 2 and  Azure is Cloud Provider 3.  AWS was used for the S3 serverless hosting of the website and the Lambda functions.  GCP Vision was used for the Image Recognition service and Azure Cosmos DB was used for the NoSQL database.
 
-This is what has been implemented on AWS to date:
+These requirements were implemented on AWS Services:
 * Two S3 buckets:
   * serverless website hosting contents bucket
     * configured as Public
@@ -39,7 +39,10 @@ This is what has been implemented on AWS to date:
       * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
       * Environment variables for S3 upload bucket name and region name in the config.json file
   * the second Lambda function that is triggered by S3 whenever a picture is uploaded and then communicates with the GCP Vision to perform the Image Recognition and outputs the GCP Vision image analysis results to CloudWatch Logs and will be sent to Azure CosmosDB NoSQL tasks.
+  
+These tasks were implemented on GCP and Azure:
 * Configured the GCP Vision Image Recognition Service
+* Configured the Azure CosmosDB NoSQL database
 
 It was necesary to register a DNS domain name with Route 53 and use the CloudFront CDN in order to use the navigator.mediaDevices Mozilla Web API which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
 
@@ -57,9 +60,4 @@ It was necesary to register a DNS domain name with Route 53 and use the CloudFro
 
 Remaining Work To Be Completed
 ------------------------------
-* Configure the Azure CosmosDB NoSQL database
-* Create HTML and Javascript to display the final results
-
-Expected Completion Date
-------------------------
-I expect to have this project finished by 14 February 2021
+* Enhance HTML and Javascript to display the image analysis results
