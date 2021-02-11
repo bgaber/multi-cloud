@@ -1,5 +1,5 @@
 venv
-cli-test-scripts
+config.py
 *.v*.py
 *.v*.js
 *.v*.html

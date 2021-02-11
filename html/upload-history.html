@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload History</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">    
+    
+<link rel='stylesheet' type='text/css' href='https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css' />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+<link rel="stylesheet" type="text/css" href="/css/multicloud.css" />
+    
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" language="javascript">
+
+	$(document).ready(function() {
+		$('#historyTable').DataTable({
+			"order": [],
+			"iDisplayLength": 15
+		});
+	});
+</script>
+
+<STYLE TYPE="text/css"><!--
+	table.dataTable thead, tfoot{
+		background-color: #5C85B3;
+		color: white;
+	}
+
+	table.dataTable tbody tr {
+   	background-color: #D3DCE8;
+	}
+
+	.table-striped tbody tr:nth-of-type(2n+1) {
+   	background-color: #E9EDF4;
+	}
+--></STYLE>
+</head>
+<body>
+<center>
+<table border="0" cellpadding="0" cellspacing="0" class="mainTable">
+
+<!-- HTML header -->
+    <tr>
+        <td>
+            <table cellpadding="3" cellspacing="0" border="0" width="100%" style="background-color:#000000">
+            <tr>
+               <td class='leftAlign' style='width:33%; '></td>
+               <td class='centerAlign' style='width:34%; '><b>Upload History</b></td>
+               <td class='rightAlign' style='width:33%; '></td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+
+	<tr>
+        <td class="stdtext">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                    <td>
+                    <fieldset>
+                        <legend>Upload History</legend>
+                        <font color="red"><b>UNDER CONSTRUCTION<br>PLEASE COME BACK SOON</b></font>
+                    </fieldset>
+                    </td>
+                </tr>
+            </table>
+        </td>
+	</tr>
+
+	<!-- HTML footer -->
+	<tr>
+        <td>
+            <table style="background-color:#000000" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                    <td align="center" class="footertext">Copyright &copy; Brian Gaber</td>
+                </tr>
+            </table>
+        </td>
+	</tr>
+</table>
+</center>
+
+</body>
+</html>
