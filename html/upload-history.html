@@ -18,15 +18,7 @@
     integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" language="javascript">
-
-	$(document).ready(function() {
-		$('#historyTable').DataTable({
-			"order": [],
-			"iDisplayLength": 15
-		});
-	});
-</script>
+<script src="/javascript/upload-history.js" type="text/javascript"></script>
 
 <STYLE TYPE="text/css"><!--
 	table.dataTable thead, tfoot{
@@ -41,52 +33,61 @@
 	.table-striped tbody tr:nth-of-type(2n+1) {
    	background-color: #E9EDF4;
 	}
+    
+    .dataTables_empty {
+    display:none;
+    }
+    
+    #flex-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    #flex-container div {
+      width: 50%; /* 2 ITEMS PER ROW, 100% / 2 = 50% */
+      height: auto;
+    }
 --></STYLE>
 </head>
 <body>
-<center>
-<table border="0" cellpadding="0" cellspacing="0" class="mainTable">
-
-<!-- HTML header -->
-    <tr>
-        <td>
-            <table cellpadding="3" cellspacing="0" border="0" width="100%" style="background-color:#000000">
-            <tr>
-               <td class='leftAlign' style='width:33%; '></td>
-               <td class='centerAlign' style='width:34%; '><b>Upload History</b></td>
-               <td class='rightAlign' style='width:33%; '></td>
-            </tr>
-            </table>
-        </td>
-    </tr>
-
-	<tr>
-        <td class="stdtext">
-            <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                <tr>
-                    <td>
-                    <fieldset>
-                        <legend>Upload History</legend>
-                        <font color="red"><b>UNDER CONSTRUCTION<br>PLEASE COME BACK SOON</b></font>
-                    </fieldset>
-                    </td>
-                </tr>
-            </table>
-        </td>
-	</tr>
-
-	<!-- HTML footer -->
-	<tr>
-        <td>
-            <table style="background-color:#000000" cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr>
-                    <td align="center" class="footertext">Copyright &copy; Brian Gaber</td>
-                </tr>
-            </table>
-        </td>
-	</tr>
-</table>
-</center>
-
+    <center>
+        <p>
+            <b>List of Analyzed Images Stored in the Azure Cosmos DB</b>
+        </p>
+        <table id='historyTable' class='table table-striped' cellspacing='0' width='80%'>
+            <thead>
+                <tr><th>ID</th><th>Filename</th><th>TimeStamp</th></tr>
+            </thead>
+            <tbody id='all_items_tbody'>
+            </tbody>
+        </table>
+        <p>Click on image above to see analysis details</p>
+        <!--<div class="flex-container">
+            <div id=image></div>
+            <div id=analysis>
+                Click on image above to see analysis details
+                <table id='analysisTable' class='table table-striped' cellspacing='0' width='80%'>
+                    <thead>
+                        <tr><th>Priority</th><th>Label</th><th>Confidence</th></tr>
+                    </thead>
+                    <tbody id='analysis_tbody'>
+                    </tbody>
+                </table>
+            </div>
+        </div>-->
+        <div id="float-container">
+            <div style="float: left; width: 40%;" id='analyzed_image'>
+            </div>
+            <div style="float: left; width: 40%;" id='analysis_results'>
+                <table id='analysisTable' class='table table-striped' cellspacing='0' width='50%'>
+                    <thead>
+                        <tr><th>Priority</th><th>Label</th><th>Confidence</th></tr>
+                    </thead>
+                    <tbody id='one_item_tbody'>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </center>
 </body>
 </html>

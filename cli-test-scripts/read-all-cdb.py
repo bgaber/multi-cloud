@@ -22,34 +22,32 @@ MASTER_KEY = config.settings['master_key']
 DATABASE_ID = config.settings['database_id']
 CONTAINER_ID = config.settings['container_id']
 
-def read_item(container, doc_id, account_number):
-    print('\nReading Item by Id\n')
+def read_items(container):
+    print('\nReading All Items\n')
 
-    # We can do an efficient point read lookup on partition key and id
-    response = container.read_item(item=doc_id, partition_key=account_number)
+    item_list = list(container.read_all_items(max_item_count=10))
     
-    #print("Dump of the JSON:")
-    #print(json.dumps(response))
-    #print()
-    #print('Item read by Id {0}'.format(doc_id))
-    #print('Scores: {0}'.format(response.get('scores')))
-    
-    epoch_time = response.get('_ts')
-    hrTime = datetime.datetime.fromtimestamp(epoch_time)
-    #hrTime = time.strftime("%a, %d %b %Y %H:%M:%S %Z", time.localtime(epoch_time))
-    #print(time.strftime("%a, %d %b %Y %H:%M:%S %Z", time.localtime(epoch_time))
-    print(datetime.datetime.fromtimestamp(epoch_time)) # 2021-02-10 21:56:13
-    print(datetime.date.fromtimestamp(epoch_time)) # 2021-02-10
-    #print(hrTime.strftime("%d %B %Y")) # 10 February 2021
-    print(hrTime.strftime("%H:%M:%S")) # 21:56:13
-    
-    # Loop through list
-    #for x in response.get('scores'):
-    #    print(x) 
+    print("Dump of the JSON:")
+    print(json.dumps(item_list, indent=3))
+    print()
+
+    print('Found {0} items'.format(item_list.__len__()))
+    print()
+    print('ID : FILENAME : EPOCH')
+    for doc in item_list:
+        print("{0} : {1} : {2}".format(doc.get('id'), doc.get('image_fname'), doc.get('_ts')))
+
+    print()
+    reduced_list = []
+    for doc in item_list:
+        reduced_list.append({"id": format(doc.get('id')), "image_fname": format(doc.get('image_fname')), "_ts": format(doc.get('_ts'))})
+        print('Item Id: {0}'.format(doc.get('id')))
+        print('Filename: {0}'.format(doc.get('image_fname')))
+        print('Epoch: {0}'.format(doc.get('_ts')))
+        print()
         
-    # Loop through list, then through dictionary
-    for thisdict in response.get('scores'):
-        print("{0}: {1}".format(thisdict["description"], thisdict["score"]))
+    #output new reduced json formatted file
+    print(json.dumps(reduced_list, indent=3))
 
 
 def run_reads():
@@ -73,9 +71,7 @@ def run_reads():
             container = db.get_container_client(CONTAINER_ID)
             print('Container with id \'{0}\' was found'.format(CONTAINER_ID))
 
-        rcdId = input("Enter the record id: ")
-        fname = input("Enter the filename of the image: ")
-        read_item(container, rcdId, fname)
+        read_items(container)
         
     except exceptions.CosmosHttpResponseError as e:
         print('\nrun_reads has caught an error. {0}'.format(e.message))
