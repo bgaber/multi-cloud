@@ -71,6 +71,10 @@ It was necesary to register a DNS domain name with Route 53 and use the CloudFro
 | Chalice | Deploy Lambda with API Gateway Trigger |
 | GCP | Vision |
 
+Example Output
+--------------
+![Alt text](images/example-output.png?raw=true "Example Output of Multi-Cloud Image Analysis Project")
+
 Remaining Work To Be Completed
 ------------------------------
 * Enhance HTML and Javascript to display the image analysis results
