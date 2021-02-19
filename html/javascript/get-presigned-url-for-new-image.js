@@ -20,7 +20,7 @@ function getPreSignedURL(imBlob) {
 
     if (nameOfFile.length > 0) {
         // Output computed file name to webpage
-        $("#name_of_file").html('<b>Name of New Image File:</b> ' + nameOfFile);
+        $("#name_of_file").html('<center><b>Name of New Image File:</b> ' + nameOfFile + '</center>');
         $.ajax({
             // The URL for the request
             url: apigw_endpt + "/generate_presigned_url",

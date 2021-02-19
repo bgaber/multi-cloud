@@ -21,10 +21,19 @@ function popnuwin(url)
 }
 
 $(document).ready(function() {
-	$("#take_a_picture, #upload_a_picture, #upload_history").button({
+	$("#take_a_picture").button({
 	   icons: {
-	      primary: "ui-icon-gear",
-	   	  secondary: "ui-icon-gear"
+	      primary: "ui-icon-image"
+	   }
+	});
+    $("#upload_a_picture").button({
+	   icons: {
+	      primary: "ui-icon-arrowthickstop-1-n"
+	   }
+	});
+    $("#upload_history").button({
+	   icons: {
+	      primary: "ui-icon-contact"
 	   }
 	});
 });

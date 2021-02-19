@@ -1,19 +1,47 @@
 <!doctype html>
 <html>
 <head>
+    <meta charset='utf-8'>
 	<title>Still photo capture and process</title>
-  <meta charset='utf-8'>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-  <script src="/javascript/capture.js"></script>
-  <script src="/javascript/get-presigned-url-for-new-image.js"></script>
-  <script src="/javascript/handle-new-image.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"
+      integrity="sha256-7LkWEzqTdpEfELxcZZlS6wAx5Ff13zZ83lYO2/ujj7g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+      integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+    
+    <link rel='stylesheet' type='text/css' href='https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css' />
+    <link rel="stylesheet" href="/css/main.css" type="text/css" media="all">
+    
+    <link rel="SHORTCUT ICON" href="/images/favicon.ico"/>
+    
+    <script src="/javascript/capture.js"></script>
+    <script src="/javascript/get-presigned-url-for-new-image.js"></script>
+    <script src="/javascript/handle-new-image.js"></script>
+    
+    <script language=JavaScript>
+    $(document).ready(function() {
+        $("#upload_history").button({
+           icons: {
+              primary: "ui-icon-gear",
+              secondary: "ui-icon-gear"
+           }
+        });
+    });
+    </script>
 
-  <link rel='stylesheet' type='text/css' href='https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css' />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
-	<link rel="stylesheet" href="/css/main.css" type="text/css" media="all">
+    <style type="text/css"><!--
+    body {
+       font-family:Verdana, Trebuchet MS;
+       font-size:12px;
+    }
+
+    .ui-dialog .ui-dialog-titlebar, .ui-dialog .ui-dialog-buttonpane, .ui-dialog .ui-dialog-content {
+        font-size: 12px;
+    }
+
+    .ui-widget button {
+        font-size: 14px;
+    }
+    --></style>
 </head>
 <body>
 <div class="contentarea">
@@ -37,6 +65,15 @@
 <div class="stdtext" id='name_of_file'></div>
 <div class="stdtext" id='psurl_result'></div>
 <div class="stdtext" id='upload_result'></div>
+<div style='visibility: hidden;' id='analysis_button'>
+    <center>
+        <form METHOD='GET' ACTION='/upload-history.html'>
+            <p>
+                <button id='upload_history'>Click Here To See Your Image Analysis</button>
+            </p>
+        </form>
+    </center>
+</div>
 <div id='dialog-message' title='Alert'></div>
 
 </body>

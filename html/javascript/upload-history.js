@@ -11,8 +11,6 @@ $(document).ready(function() {
     const apigw_endpt_all = "https://3okf2i4b27.execute-api.ca-central-1.amazonaws.com/api";
     const apigw_endpt_one = "https://ign1au7nz2.execute-api.ca-central-1.amazonaws.com/api";
     
-    $("#one_item_tbody").html("");
-    
     $.ajax({
         url: apigw_endpt_all + "/return_all_cosmosdb_rcds",
         type: "GET",
@@ -31,9 +29,10 @@ $(document).ready(function() {
                     }
                     else if (key == 'image_fname') { // Asure Cosmos DB Partition Key
                         all_items +=`<td><input id='id_${i}' type='hidden' value='${item[rcd_id]}'><input id='image_fname_${i}' type='hidden' value='${item[key]}'><img src="https://bg-ca-central-1-uploads.s3.ca-central-1.amazonaws.com/${item[key]}" width="50" id='img_${i}'></td>`;
-                    } else {                         // Any other Cosmos DB items
-                        $("td").last().after(`<td>${item[key]}</td>`);
-                         all_items += `<td>${item[key]}</td>`;
+                    } else if (key == '_ts') {      // Asure Cosmos DB _ts key
+                        var imgDate = new Date(item[key]*1000);
+                        all_items += `<td>${imgDate.toLocaleString()}</td>`;
+                        //all_items += `<td>${item[key]}</td>`;
                     }
                 }
                 all_items += "</tr>\n";
