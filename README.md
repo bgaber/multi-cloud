@@ -35,12 +35,23 @@ These requirements were implemented on AWS Services:
     * CORS configuration
     * configure to trigger the second Lambda function
 * HTML, jQuery and CSS that receives the S3 Pre-Signed URL and uploads the picture object to the S3 upload bucket
-* Two Lambda functions:
+* Four Lambda functions, three of which are deployed using AWS Chalice:
   * the first Lambda function generates the S3 Pre-Signed URLs to PUT the image object
-    * deployed using Chalice to automatically create API REST API trigger and IAM role
+    * deployed using Chalice to automatically create an API REST API trigger and associated IAM role
       * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
       * Environment variables for S3 upload bucket name and region name in the config.json file
-  * the second Lambda function that is triggered by S3 whenever a picture is uploaded and then communicates with the GCP Vision to perform the Image Recognition and outputs the GCP Vision image analysis results to CloudWatch Logs and will be sent to Azure CosmosDB NoSQL tasks.
+  * the second Lambda function that is triggered by S3 whenever a picture is uploaded and then communicates with the GCP Vision to perform the Image Recognition and outputs the GCP Vision image analysis results to 
+  CloudWatch Logs and will be sent to Azure CosmosDB NoSQL tasks.
+  * the third Lambda function returns the id, image_fname (primary key) and _ts (timestamp) of all items from the container in the Azure Cosmos DB
+    * deployed using Chalice to automatically create an API REST API trigger and associated IAM role
+      * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
+      * Environment variables for S3 upload bucket name and region name in the config.json file
+      * The returned data (id, image_fname and _ts) is displayed using JavaScript in a HTML table
+  * the fourth Lambda function returns all data of one item from the Azure Cosmos DB based on the id and primary key
+    * deployed using Chalice to automatically create and API REST API trigger and associated IAM role
+      * IAM Policy json file for S3 Get Object, Put Object and Put Object ACL
+      * Environment variables for S3 upload bucket name and region name in the config.json file
+      * The GCP Vision API score portion of returned data is displayed alongside the actual image using Javascript in a HTML table
   
 These tasks were implemented on GCP and Azure:
 * Configured the GCP Vision Image Recognition Service
