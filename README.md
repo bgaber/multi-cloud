@@ -3,11 +3,11 @@
 
 Goal
 ----
-My goal when I began this project was to design and build an image upload and recognition process using no less than three different cloud providers.  In the end I achieved my goal.
+The goal of this project was to design and build an image upload and recognition process using no less than three different cloud providers.
 
 Outcome
 -------
-In completing this propject I was able to gain practical hands-on experience with cloud providers with whom I don't not normally work.
+In completing this project I was able to gain practical hands-on experience with cloud providers with whom I do not normally work.
 
 Main Steps
 ----------
@@ -75,6 +75,4 @@ Example Output
 --------------
 ![Alt text](images/example-output.png?raw=true "Example Output of Multi-Cloud Image Analysis Project")
 
-Remaining Work To Be Completed
-------------------------------
-* Enhance HTML and Javascript to display the image analysis results
+
