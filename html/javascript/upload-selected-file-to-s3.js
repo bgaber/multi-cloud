@@ -37,11 +37,8 @@ $(document).ready(function() {
     const uploadFile = file => {
         const fileInput = document.querySelector("#fileInput");
         var fName = fileInput.files.item(0).name;
-        var fSize = fileInput.files.item(0).size;
         var fType = fileInput.files.item(0).type;
-        $("#selectedFile").html(fName);
-        $("#size_result").html(fSize);
-        $("#type_result").html(fType);
+        $("#name_of_file").html(fName);
         
         var canvas = null;
         var photo = null;
